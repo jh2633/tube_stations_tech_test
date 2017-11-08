@@ -11,17 +11,18 @@ class Tube
       return shortest_list
     end
 
-    def compare_arrays
-      
+    def compare_arrays(one, two)
+      (one&two).empty?
     end
 
 
 private
-
+  #this method creates an array of all alphabet characters as individual strings
   def generate_alphabet_array
     ('a'..'z').to_a
   end
 
+  #split an array of strings into sub-arrays of individual characters
   def split_strings(array)
     array_of_split_strings = []
     array.each do |x|
