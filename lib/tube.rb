@@ -12,10 +12,10 @@ class Tube
     #create an array of station name from the hash"
     def create_station_array
       @stations_hash.each {|k,v| @stations_array << v}
-      @stations_array.sort! {|x, y| y.length <=> x.length}
     end
 
     def list_of_stations(station_names = @stations_array)
+      station_names.sort! {|x, y| y.length <=> x.length}
       split_stations = split_strings(station_names)
       iterate_array(split_stations, @alphabet_array)
     end
