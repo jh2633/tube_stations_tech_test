@@ -1,7 +1,12 @@
 ## Instructions
 1. Fork and pull this repo
 1. Install Ruby if not present on machine
-1. Bundle the gems from the Gemfile using Bundler
+1. Navigate to the project directory
+1. Bundle the gems from the Gemfile using Bundler. If not present then install bundler
+```
+$gem install bundler
+$bundler
+```
 1. Run RSpec to view the passing/failing tests
 1. To run the program, navigate to the lib folder and do the following
 
