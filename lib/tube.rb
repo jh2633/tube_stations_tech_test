@@ -3,9 +3,10 @@ include StationNames
 
 class Tube
   attr_reader :stations_array
-    def initialize(hash = StationNames::ALL_STATIONS)
-    @stations_hash = hash
-    @stations_array = []
+    def initialize(hash = StationNames::ALL_STATIONS, alphabet = ('a'..'z').to_a)
+      @stations_hash = hash
+      @stations_array = []
+      @alphabet_array = alphabet
     end
 
     #create an array of station name from the hash"
@@ -16,28 +17,31 @@ class Tube
 
     def list_of_stations(station_names = @stations_array)
       split_stations = split_strings(station_names)
-      alphabet = generate_alphabet_array
+      iterate_array(split_stations, @alphabet_array)
+    end
+
+    #extracting the block from list of stations, this will compare two arrays,
+    #returning the shortest list of elements in the first array that matches the
+    #elements from the second array
+    def iterate_array(array_one, array_two)
       shortest_list = []
-
-      split_stations.each do |station|
-          if compare_arrays(station, alphabet)
-            next
-          else
-            alphabet -= station
-            shortest_list << station.join("")
-
-          end
+      array_one.each do |x|
+        if compare_arrays(x, array_two)
+          next
+        else
+          array_two -= x
+          shortest_list << x.join("")
+        end
       end
       return shortest_list
+
     end
+
     #checks for similiarity between two stations
     def compare_arrays(one, two)
       (one&two).empty?
     end
-    #this method creates an array of all alphabet characters as individual strings
-    def generate_alphabet_array
-      ('a'..'z').to_a
-    end
+
 
 private
 
