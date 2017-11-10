@@ -8,6 +8,7 @@ class Tube
     @stations_array = []
     end
 
+    #create an array of station name from the hash"
     def create_station_array
       @stations_hash.each {|k,v| @stations_array << v}
     end
@@ -22,14 +23,13 @@ class Tube
             next
           else
             alphabet -= station
-            shortest_list << station
+            shortest_list << station.join("")
 
           end
       end
-      puts shortest_list
-      puts alphabet
+      return shortest_list
     end
-
+    #checks for similiarity between two stations
     def compare_arrays(one, two)
       (one&two).empty?
     end
