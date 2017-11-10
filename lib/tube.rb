@@ -2,25 +2,44 @@ require_relative 'stations'
 include StationNames
 
 class Tube
+  attr_reader :stations_array
+    def initialize(hash = StationNames::ALL_STATIONS)
+    @stations_hash = hash
+    @stations_array = []
+    end
 
-    def list_of_stations(station_names)
+    def create_station_array
+      @stations_hash.each {|k,v| @stations_array << v}
+    end
+
+    def list_of_stations(station_names = @stations_array)
       split_stations = split_strings(station_names)
-      alphabets = generate_alphabet_array
+      alphabet = generate_alphabet_array
       shortest_list = []
 
-      return shortest_list
+      split_stations.each do |station|
+          if compare_arrays(station, alphabet)
+            next
+          else
+            alphabet -= station
+            shortest_list << station
+
+          end
+      end
+      puts shortest_list
+      puts alphabet
     end
 
     def compare_arrays(one, two)
       (one&two).empty?
     end
-
+    #this method creates an array of all alphabet characters as individual strings
+    def generate_alphabet_array
+      ('a'..'z').to_a
+    end
 
 private
-  #this method creates an array of all alphabet characters as individual strings
-  def generate_alphabet_array
-    ('a'..'z').to_a
-  end
+
 
   #split an array of strings into sub-arrays of individual characters
   def split_strings(array)
