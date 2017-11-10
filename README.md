@@ -20,7 +20,7 @@ $bundler
   ```
 1. You could modify the instructions to compare different arrays. The initialize method takes three different arguments, the first is a hash, second is the array you would like to examine, and the third is an array you would want to compare the previous array to.
 1. If you use a custom array for the second argument, you will not need to run the "create_station_array" method.
-1. The original JSON was not modified to preserve its source integrity, hence the extra step needed to convert each values to the stations_array
+1. The original JSON was not modified to preserve its source, hence the extra step needed to convert each value(station name) to the stations_array
 
 
 ## The problem
