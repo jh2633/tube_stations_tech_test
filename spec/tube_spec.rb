@@ -2,12 +2,12 @@ require 'rspec'
 require_relative '../lib/tube'
 
 describe Tube do
-  stations = ["oxford circus", "euston", "brixton", "hammersmith"]
   before(:each) do
      @tube = Tube.new
    end
   describe 'list of statons' do
     it "returns an array" do
+      stations = ["oxford circus", "euston", "brixton", "hammersmith"]
       expect(@tube.list_of_stations(stations)).to be_an_instance_of(Array)
     end
 
