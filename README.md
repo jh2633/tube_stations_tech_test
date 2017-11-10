@@ -3,9 +3,10 @@
 1. Install Ruby if not present on machine
 1. Bundle the gems from the Gemfile using Bundler
 1. Run RSpec to view the passing/failing tests
-1. To run the program, open irb and type the following
+1. To run the program, navigate to the lib folder and do the following
 
   ```
+  $irb
   $require_relative 'tube'  
   $t = Tube.new
   $t.create_station_array
